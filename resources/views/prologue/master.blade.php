@@ -15,7 +15,9 @@
 
 <body class="is-preload">
 
-    @include('prologue.partials.header')//incluimos las vistas que hemos creado en la carpeta partials
+    @include('prologue.partials.header')
+
+    @include('prologue.partials.navbar')
 
     @include('prologue.partials.main')
 
