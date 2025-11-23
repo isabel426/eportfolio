@@ -8,12 +8,12 @@ class FamiliasProfesionalesController extends Controller
 {
     public function getIndex(){
         return view('familias-profesionales.index')
-            ->with('familias', self::$familias_profesionales);
+            ->with('familias', $this->familias_profesionales);
     }
 
     public function getShow($id){
         return view('familias-profesionales.show')
-            ->with('familia', self::$familias_profesionales[$id])
+            ->with('familia', $this->familias_profesionales[$id])
             ->with('id', $id);
     }
 
@@ -23,7 +23,7 @@ class FamiliasProfesionalesController extends Controller
 
     public function getEdit($id){
         return view('familias-profesionales.edit')
-            ->with('familia', self::$familias_profesionales[$id])
+            ->with('familia', $this->familias_profesionales[$id])
             ->with('id', $id);
     }
 
