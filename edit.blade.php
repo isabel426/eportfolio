@@ -13,32 +13,19 @@
                 </div>
                 <div class="card-body" style="padding:30px">
 
-                    <form action="{{ action([App\Http\Controllers\ProyectosController::class, 'update'],  ['id' => $id]) }}" method="POST">
+                    <form action="{{ action([App\Http\Controllers\FamiliasProfesionalesController::class, 'update'],  ['id' => $id]) }}" method="POST">
 
                         @csrf
                         @method('PUT')
 
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" name="nombre" id="nombre" class="form-control">
+                            <input type="text" name="nombre" id="nombre" class="form-control"  value="{{$familias_profesionales['nombre']}}">
                         </div>
 
                         <div class="form-group">
-                            <label for="docente_id">Docente</label>
-                            <input type="number" name="docente_id" id="docente_id">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="dominio">Dominio</label><br />
-                            https://github.com/2DAW-CarlosIII/
-                            <input type="text" name="dominio" id="dominio" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="metadatos">Metadatos</label>
-                            <textarea name="metadatos" id="metadatos" class="form-control" rows="3"></textarea>
-                            <br /><small>Cada metadato irá separado del siguiente por una línea <br />
-                                y la clave irá separada por : del valor</small>
+                            <label for="codigo">Codigo</label>
+                            <input type="number" name="codigo" id="codigo"  value="{{$familias_profesionales['codigo']}}">
                         </div>
 
                         <div class="form-group text-center">
