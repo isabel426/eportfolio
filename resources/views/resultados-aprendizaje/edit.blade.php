@@ -12,19 +12,19 @@
                 </div>
                 <div class="card-body" style="padding:30px">
 
-                    <form action="{{ action([App\Http\Controllers\FamiliasProfesionalesController::class, 'update'],  ['id' => $id]) }}" method="POST">
+                    <form action="{{ action([App\Http\Controllers\ResultadosAprendizajeController::class, 'update'],  ($resultados_aprendizaje->) ) }}" method="POST">
 
                         @csrf
                         @method('PUT')
 
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" name="nombre" id="nombre" class="form-control"  value="{{$resultadoAprendizaje->nombre}}">
+                            <input type="text" name="nombre" id="nombre" class="form-control"  value="{{$resultados_aprendizaje->nombre}}">
                         </div>
 
                         <div class="form-group">
                             <label for="codigo">Codigo</label>
-                            <input type="text" name="codigo" id="codigo" value="{{$familias_profesionales['codigo']}}">
+                            <input type="text" name="codigo" id="codigo" value="{{$resultados_aprendizaje->codigo}}">
                         </div>
 
 
