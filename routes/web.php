@@ -33,7 +33,9 @@ Route::prefix('familias_profesionales')->group(function () {
 
     Route::put('update/{id}',[FamiliasProfesionalesController::class,'update'])->where('id', '[0-9]+');
 
-    Route::prefix('resultados_aprendizaje')->group(function () {
+
+});
+ Route::prefix('resultados_aprendizaje')->group(function () {
 
             Route::get('/', [ResultadosAprendizajeController::class, 'getIndex']);
 
@@ -48,8 +50,6 @@ Route::prefix('familias_profesionales')->group(function () {
             Route::put('update/{id}',[ResultadosAprendizajeController::class,'update'])->where('id', '[0-9]+');
 
     });
-});
-
 
 // ----------------------------------------
 Route::get('perfil/{id?}', function ($id = null) {
