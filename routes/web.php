@@ -53,6 +53,9 @@ Route::prefix('familias_profesionales')->group(function () {
 
     });
 
+Route::prefix('ciclos_formativos')->group(function () {
+
+        Route::get('/', [CiclosFormativosController::class, 'getIndex']);
 
         Route::get('create', [CiclosFormativosController::class, 'getCreate']);
 

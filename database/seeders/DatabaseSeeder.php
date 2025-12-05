@@ -29,6 +29,9 @@ class DatabaseSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
 
         $this->call(CriteriosEvaluacionTableSeeder::class);
+        $this->call(FamiliasProfesionalesTableSeeder::class);
+        $this->call(CiclosFormativosTableSeeder::class);
+        $this->call(ResultadosAprendizajeTableSeeder::class);
 
         Model::reguard();
 

@@ -14,7 +14,7 @@ class CiclosFormativosTableSeeder extends Seeder
     public function run(): void
     {
         DB::table('ciclos_formativos')->truncate();
-        $familias = FamiliasProfesionalesSeeder::$familias_profesionales;
+        $familias = FamiliasProfesionalesTableSeeder::$familias_profesionales;
         $codigosFamilias = array_column($familias, 'codigo');
         foreach (self::$ciclos as $ciclo) {
             DB::table('ciclos_formativos')->insert([
