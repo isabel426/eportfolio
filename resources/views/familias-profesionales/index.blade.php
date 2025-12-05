@@ -2,22 +2,22 @@
     @section('content')
 <div class="row">
 
-    @foreach ($familias_profesionales as $key => $familia_profesional)
+    @foreach ($familias_profesionales as $familiaProfesional)
 
     <div class="col-4 col-6-medium col-12-small">
         <section class="box">
             <a href="#" class="image featured"><img src="{{ asset('/landed/images/logo.png') }}" style="height:200px" /></a>
             <header>
-                <h3>{{ $familia_profesional['nombre'] }}</h3>
+                <h3>{{ $familiaProfesional->nombre }}</h3>
             </header>
             <p>
-                <a href="http://github.com/2DAW-CarlosIII/{{ $familia_profesional['nombre'] }}">
-                    http://github.com/2DAW-CarlosIII/{{ $familia_profesional['codigo'] }}
+                <a href="http://github.com/2DAW-CarlosIII/{{ $familiaProfesional -> codigo }}">
+                    http://github.com/2DAW-CarlosIII/{{ $familiaProfesional -> codigo }}
                 </a>
             </p>
             <footer>
                 <ul class="actions">
-                    <li><a href="{{ action([App\Http\Controllers\FamiliasProfesionalesController::class, 'getShow'], ['id' => $key ]) }}" class="button alt">Más info</a></li>
+                    <li><a href="{{ action([App\Http\Controllers\FamiliasProfesionalesController::class, 'getShow'], ['id' => $familiaProfesional->id] ) }}" class="button alt">Más info</a></li>
                 </ul>
             </footer>
         </section>

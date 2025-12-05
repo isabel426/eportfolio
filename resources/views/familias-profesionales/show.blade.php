@@ -9,18 +9,18 @@
         </div>
         <div class="col-sm-8">
 
-            <h3><strong>Nombre: </strong>{{ $familias_profesionales['nombre'] }}</h3>
+            <h3><strong>Nombre: </strong>{{ $familia_profesional -> nombre }}</h3>
             <h4><strong>Dominio: </strong>
-                <a href="http://github.com/2DAW-CarlosIII/{{ $familias_profesionales['codigo'] }}">
-                    http://github.com/2DAW-CarlosIII/{{ $familias_profesionales['codigo'] }}
+                <a href="http://github.com/2DAW-CarlosIII/{{ $familia_profesional -> codigo }}">
+                    http://github.com/2DAW-CarlosIII/{{ $familia_profesional -> codigo }}
                 </a>
             </h4>
-            <h4><strong>Codigo: </strong>{{ $familias_profesionales['codigo'] }}</h4>
-            <p><strong>Nombre: </strong>{{ $familias_profesionales['nombre'] }}</p>
+            <h4><strong>Codigo: </strong>{{ $familia_profesional -> codigo }}</h4>
+            <p><strong>Nombre: </strong>{{ $familia_profesional -> nombre }}</p>
 
 
 
-            <a class="btn btn-warning" href="{{ action([App\Http\Controllers\FamiliasProfesionalesController::class, 'getEdit'], ['id' => $id]) }}">
+            <a class="btn btn-warning" href="{{ action([App\Http\Controllers\FamiliasProfesionalesController::class, 'getEdit'], ['id' => $familia_profesional->id]) }}">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                 Editar calificacion del alumno.
             </a>

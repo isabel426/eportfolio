@@ -3,7 +3,7 @@
 
 
     @section('content')
-  <h2>Editar Familias Profesionales con id: {{$id}}</h2>
+  <h2>Editar Familias Profesionales con id: {{$familia_profesional->id}}</h2>
           <div class="row" style="margin-top:40px">
         <div class="offset-md-3 col-md-6">
             <div class="card">
@@ -12,19 +12,19 @@
                 </div>
                 <div class="card-body" style="padding:30px">
 
-                    <form action="{{ action([App\Http\Controllers\FamiliasProfesionalesController::class, 'update'],  ['id' => $id]) }}" method="POST">
+                    <form action="{{ action([App\Http\Controllers\FamiliasProfesionalesController::class, 'update'],  ['id' => $familia_profesional->id]) }}" method="POST">
 
                         @csrf
                         @method('PUT')
 
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" name="nombre" id="nombre" class="form-control"  value="{{$familias_profesionales['nombre']}}">
+                            <input type="text" name="nombre" id="nombre" class="form-control"  value="{{$familia_profesional -> nombre}}">
                         </div>
 
                         <div class="form-group">
                             <label for="codigo">Codigo</label>
-                            <input type="text" name="codigo" id="codigo" value="{{$familias_profesionales['codigo']}}">
+                            <input type="text" name="codigo" id="codigo" value="{{$familia_profesional -> codigo}}">
                         </div>
 
 
