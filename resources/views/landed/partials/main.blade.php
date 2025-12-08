@@ -12,7 +12,7 @@
 
 
 <!-- One -->
-<section id="one" class="spotlight style1 bottom">
+<section id="one" class="bottom">
     <span class="image fit main"><img src="{{ asset('/landed/images/pic02.jpg') }}" alt="" /></span>
     <div class="content">
         <!-- content -->
@@ -27,7 +27,6 @@
             </div>
         </section>
     </div>
-    <a href="#two" class="goto-next scrolly">Next</a>
 </section>
 
 <!-- Two -->
