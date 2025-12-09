@@ -83,5 +83,5 @@ Route::prefix('criterios_evaluacion')->group(function () {
     Route::get('show/{id}', [CriteriosEvaluacionController::class, 'getShow'])->where('id', '[0-9]+');
     Route::get('edit/{id}', [CriteriosEvaluacionController::class, 'getEdit'])->where('id', '[0-9]+');
     Route::post('store', [CriteriosEvaluacionController::class, 'postCreate']);
-    Route::put('update', [CriteriosEvaluacionController::class, 'putCreate'])->where('id', '[0-9]+');
+    Route::put('update/{id}', [CriteriosEvaluacionController::class, 'putCreate'])->where('id', '[0-9]+');
 });
