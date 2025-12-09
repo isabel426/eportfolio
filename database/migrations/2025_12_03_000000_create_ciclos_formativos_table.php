@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('ciclos_formativos', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->integer('familia_profesional_id')->nullable();
+            $table->unsignedBigInteger('familia_profesional_id')->nullable();
             $table->string('nombre', 255);
             $table->string('codigo', 50);
             $table->enum('grado', ['G.M.', 'G.S.', 'C.E. (G.M.)', 'C.E. (G.S.)', 'BÁSICA']);
             $table->string('descripcion')->nullable();
+            $table->timestamps();
+
         });
     }
 

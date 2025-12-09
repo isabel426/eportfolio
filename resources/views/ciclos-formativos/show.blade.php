@@ -22,7 +22,7 @@
 
             <a class="btn btn-warning" href="{{ action([App\Http\Controllers\CiclosFormativosController::class, 'getEdit'], ['id' => $ciclo->id]) }}">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                Editar calificacion del alumno.
+                Modificar ciclo formativo del alumno.
             </a>
             <a class="btn btn-outline-info" href="{{ action([App\Http\Controllers\CiclosFormativosController::class, 'getIndex']) }}">
                 Volver al listado
