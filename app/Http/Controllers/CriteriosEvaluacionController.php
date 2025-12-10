@@ -27,4 +27,16 @@ class CriteriosEvaluacionController extends Controller
             ->with('criterios_evaluacion', CriterioEvaluacion::findOrFail($id))
             ->with('id', $id);
     }
+     public function postCreate(Request $request)
+    {
+        $criterioEvaluacion = CriterioEvaluacion::create($request->all());
+        return redirect()->action([self::class, 'getShow'], ['id' => $criterioEvaluacion->id]);
+    }
+    public function putCreate(Request $request, $id)
+    {
+        $criterioEvaluacion = CriterioEvaluacion::findOrFail($id);
+        $criterioEvaluacion->update($request->all());
+        return redirect()->action([self::class, 'getShow'], ['id' => $criterioEvaluacion->id]);
+    }
+
 }
