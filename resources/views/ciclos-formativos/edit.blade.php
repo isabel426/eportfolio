@@ -26,7 +26,6 @@
                             <input type="text" name="codigo" id="codigo" value="{{$ciclo->codigo}}">
                         </div>
 
-
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
                                 Modificar ciclo formativo
