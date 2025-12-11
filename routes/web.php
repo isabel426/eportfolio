@@ -106,3 +106,5 @@ Route::prefix('criterios_evaluacion')->group(function () {
     Route::put('update/{id}', [CriteriosEvaluacionController::class, 'putCreate'])->where('id', '[0-9]+')
     ->middleware('auth');
 });
+
+require __DIR__.'/auth.php';
