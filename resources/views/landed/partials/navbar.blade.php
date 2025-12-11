@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li>
-                    @include('dopetrope.partials.dropdown-user')
+                    @include('landed.partials.dropdown-user')
                 </li>
             @else
                 <li>
