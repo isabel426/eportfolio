@@ -23,7 +23,7 @@
         @if (Route::has('login'))
             @auth
                 <li>
-                    <a href="{{ url('/dashboard') }}" class="button primary">
+                    <a href="{{ url('/dashboard') }}">
                         Dashboard
                     </a>
                 </li>
@@ -32,14 +32,14 @@
                 </li>
             @else
                 <li>
-                    <a href="{{ route('login') }}" class="button primary">
+                    <a href="{{ route('login') }}">
                         Log in
                     </a>
                 </li>
 
                 @if (Route::has('register'))
                     <li>
-                        <a href="{{ route('register') }}" class="button primary">
+                        <a href="{{ route('register') }}">
                             Sign up
                         </a>
                     </li>
