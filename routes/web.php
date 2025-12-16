@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CriteriosEvaluacionController;
 use App\Http\Controllers\CiclosFormativosController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\FamiliasProfesionalesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResultadosAprendizajeController;
-use Illuminate\Support\Facades\Route;
 
 
 Route::get('/dashboard', function () {
@@ -24,7 +25,7 @@ Route::get('/', [WelcomeController::class, 'getHome'])
     ->name('home');
 
 // ----------------------------------------
-Route::prefix('familias_profesionales')->group(function () {
+Route::prefix('familias-profesionales')->group(function () {
 
     Route::get('/', [FamiliasProfesionalesController::class, 'getIndex']);
 
@@ -44,16 +45,19 @@ Route::prefix('familias_profesionales')->group(function () {
     Route::put('update/{id}', [FamiliasProfesionalesController::class, 'putCreate'])->where('id', '[0-9]+')
     ->middleware('auth');
 
+    Route::group(['middleware' => 'auth'], function () {
 
+        Route::get('create', [FamiliasProfesionalesController::class, 'getCreate']);
+        Route::get('edit/{id}', [FamiliasProfesionalesController::class, 'getEdit'])->where('id', '[0-9]+');
+        Route::post('store', [FamiliasProfesionalesController::class, 'postCreate']);
+        Route::put('update/{id}', [FamiliasProfesionalesController::class, 'putCreate'])->where('id', '[0-9]+');
+    });
 });
- Route::prefix('resultados_aprendizaje')->group(function () {
-
-            Route::get('/', [ResultadosAprendizajeController::class, 'getIndex']);
 
             Route::get('create', [ResultadosAprendizajeController::class, 'getCreate'])
             ->middleware('auth');
 
-            Route::get('show/{id}',[ResultadosAprendizajeController::class,'getShow']) -> where('id', '[0-9]+');
+Route::prefix('resultados-aprendizaje')->group(function () {
 
             Route::get('edit/{id}',[ResultadosAprendizajeController::class,'getEdit']) -> where('id', '[0-9]+')
             ->middleware('auth');
@@ -64,17 +68,21 @@ Route::prefix('familias_profesionales')->group(function () {
             Route::put('update/{id}',[ResultadosAprendizajeController::class,'putCreate'])->where('id', '[0-9]+')
             ->middleware('auth');
 
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('create', [ResultadosAprendizajeController::class, 'getCreate']);
+        Route::get('edit/{id}', [ResultadosAprendizajeController::class, 'getEdit'])->where('id', '[0-9]+');
+        Route::post('store', [ResultadosAprendizajeController::class, 'postCreate']);
+        Route::put('update/{id}', [ResultadosAprendizajeController::class, 'putCreate'])->where('id', '[0-9]+');
     });
+});
 
-Route::prefix('ciclos_formativos')->group(function () {
-
-        Route::get('/', [CiclosFormativosController::class, 'getIndex']);
 
         Route::get('create', [CiclosFormativosController::class, 'getCreate'])
         ->middleware('auth');
 
+    Route::get('/', [CiclosFormativosController::class, 'getIndex']);
+    Route::get('show/{id}', [CiclosFormativosController::class, 'getShow'])->where('id', '[0-9]+');
 
-        Route::get('show/{id}', [CiclosFormativosController::class, 'getShow'])->where('id', '[0-9]+');
 
         Route::get('edit/{id}', [CiclosFormativosController::class, 'getEdit'])->where('id', '[0-9]+')
         ->middleware('auth');
@@ -85,15 +93,19 @@ Route::prefix('ciclos_formativos')->group(function () {
         Route::put('update/{id}', [CiclosFormativosController::class, 'putCreate'])->where('id', '[0-9]+')
         ->middleware('auth');
     });
+});
+
+
+
 // ----------------------------------------
 Route::get('perfil/{id?}', function ($id = null) {
     if ($id === null)
         return 'Visualizar el currículo propio';
     return 'Visualizar el currículo de ' . $id;
-}) -> where('id', '[0-9]+');
+})->where('id', '[0-9]+');
 
 
-Route::prefix('criterios_evaluacion')->group(function () {
+Route::prefix('criterios-evaluacion')->group(function () {
 
     Route::get('/', [CriteriosEvaluacionController::class, 'getIndex']);
     Route::get('create', [CriteriosEvaluacionController::class, 'getCreate'])
