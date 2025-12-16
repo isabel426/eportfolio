@@ -45,8 +45,15 @@ class FamiliasProfesionalesController extends Controller
     {
         $familiaProfesional = FamiliaProfesional::findOrFail($id);
 
-        $familiaProfesional->update($request->all());
+        if ($request->hasFile('imagen')) {
+            $path = $request->file('imagen')->store('imagenes', ['disk' => 'public']);
+            $familiaProfesional->imagen = $path;
+        }
+
+        $familiaProfesional->save();
+        $familiaProfesional->update($request->except('imagen'));
+
+
         return redirect()->action([self::class, 'getShow'], ['id' => $familiaProfesional->id]);
     }
-
 }
