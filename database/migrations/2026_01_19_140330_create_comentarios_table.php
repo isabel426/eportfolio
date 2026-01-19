@@ -18,12 +18,10 @@ return new class extends Migration
             $table->foreign('evidencia_id')->references('id')->on('evidencias')->onDelete('cascade');
 
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('estudiante_id')->on('evidencias')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->text('contenido');
             $table->enum('tipo',[ 'feedback', 'pregunta', 'sugerencia']);
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
             $table->timestamps();
         });
     }
