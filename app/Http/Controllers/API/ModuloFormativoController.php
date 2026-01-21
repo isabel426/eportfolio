@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ModuloFormativoResource;
+use App\Models\CicloFormativo;
 use App\Models\ModuloFormativo;
 use Illuminate\Http\Request;
 
@@ -48,8 +49,9 @@ class ModuloFormativoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($parent_id, ModuloFormativo $id)
+    public function show($parent_id, CicloFormativo $cicloFormativo, ModuloFormativo $id)
     {
+        //abort_if($id->ciclo_formativo_id != $cicloFormativo->id, 404, 'Módulo Formativo no encontrado en el Ciclo Formativo especificado.');
         return new ModuloFormativoResource($id);
     }
 

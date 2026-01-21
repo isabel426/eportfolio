@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CicloResource;
 use App\Models\CicloFormativo;
+use App\Models\FamiliaProfesional;
 use Illuminate\Http\Request;
 
 class CicloController extends Controller
@@ -42,7 +43,7 @@ class CicloController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($parent_id, CicloFormativo $id)
+    public function show($parent_id, FamiliaProfesional $familiaProfesional, CicloFormativo $id)
     {
         return new CicloResource($id);
     }

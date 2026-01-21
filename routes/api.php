@@ -21,26 +21,22 @@ Route::prefix('v1')->group(function () {
 
     Route::get('modulos-impartidos', [ModuloFormativoController::class, 'index'])->middleware('auth:sanctum');;
 
-    // familias-profesionales y /familias-profesionales/{id}
     Route::apiResource('familias-profesionales', FamiliaProfesionalController::class)
         ->parameters([
             'familias-profesionales' => 'id'
         ]);
 
-    // familias-profesionales/{parent_id}/ciclos-formativos/{id}
     Route::apiResource('familias-profesionales.ciclos-formativos', CicloController::class)
         ->parameters([
             'familias-profesionales' => 'parent_id',
             'ciclos-formativos' => 'id'
         ]);
 
-    // ciclos-formativos/{parent_id}/modulos-formativos/{id}
     Route::apiResource('ciclos-formativos.modulos-formativos', ModuloFormativoController::class)
         ->parameters([
             'ciclos-formativos' => 'parent_id',
             'modulos-formativos' => 'id'
         ]);
-
 });
 
 
