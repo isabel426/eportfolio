@@ -2,7 +2,7 @@
     @section('content')
 <div class="row">
 
-    @foreach ($criterios_evaluacion as $key => $criterioEvaluacion)
+    @foreach ($criterios_evaluacion as $criterioEvaluacion)
 
     <div class="col-4 col-6-medium col-12-small">
         <section class="box">
@@ -17,7 +17,7 @@
             </p>
             <footer>
                 <ul class="actions">
-                    <li><a href="{{ action([App\Http\Controllers\CriteriosEvaluacionController::class, 'getShow'], ['id' => $key] ) }}" class="button alt">Más info</a></li>
+                    <li><a href="{{ action([App\Http\Controllers\CriteriosEvaluacionController::class, 'getShow'], ($criterioEvaluacion->id) ) }}" class="button alt">Más info</a></li>
                 </ul>
             </footer>
         </section>
