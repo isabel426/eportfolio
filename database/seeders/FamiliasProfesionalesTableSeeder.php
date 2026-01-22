@@ -19,6 +19,8 @@ class FamiliasProfesionalesTableSeeder extends Seeder
             FamiliaProfesional::insert([
                 'codigo' => $familia['codigo'],
                 'nombre' => $familia['nombre'],
+                'created_at' => now(),
+                'updated_at' => now()
             ]);
         }
         $this->command->info('¡Tabla familias_profesionales inicializada con datos!');

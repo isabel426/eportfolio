@@ -21,7 +21,7 @@ class CiclosFormativosTableSeeder extends Seeder
                 'codigo' => $ciclo['codCiclo'],
                 'familia_profesional_id' => array_search($ciclo['codFamilia'], $codigosFamilias) + 1,
                 'grado' => $ciclo['grado'],
-                'nombre' => $ciclo['nombre'],
+                'nombre' => $ciclo['nombre']
             ]);
         }
         $this->command->info('¡Tabla ciclos inicializada con datos!');

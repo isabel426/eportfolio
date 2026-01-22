@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('familias_profesionales', function (Blueprint $table) {
+        Schema::create('criterios_tareas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 255);
-            $table->string('descripcion', 50)->nullable();
-            $table->string('codigo', 50);
+            $table->unsignedInteger('tarea_id');
+            $table->unsignedBigInteger('actividad_id');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('familias_profesionales');
+        Schema::dropIfExists('criterios_tareas');
     }
 };

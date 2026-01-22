@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Evaluacion;
 use App\Models\ResultadoAprendizaje;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -18,10 +19,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Model::unguard();
-        Schema::disableForeignKeyConstraints();
+       /*
 
-        /*User::factory()->create([
+        User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);*/
@@ -33,10 +33,14 @@ class DatabaseSeeder extends Seeder
         $this->call(FamiliasProfesionalesTableSeeder::class);
         $this->call(CiclosFormativosTableSeeder::class);
         $this->call(EvidenciasTableSeeder::class);
+        $this->call(MatriculasTableSeeder::class);
         $this->call(ResultadosAprendizajeTableSeeder::class);
+        $this->call(ModulosFormativosTableSeeder::class);
+
+         $this->call(TareasTableSeeder::class);
+        $this->call(EvaluacionesEvidenciasTableSeeder::class);
 
         Model::reguard();
-
         Schema::enableForeignKeyConstraints();
     }
 }

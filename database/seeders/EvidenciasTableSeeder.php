@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Evidencia;
 use App\Models\Evidencias;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,9 +14,9 @@ class EvidenciasTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Evidencias::truncate();
+        Evidencia::truncate();
         foreach (self::$evidencias as $evidencia) {
-            $c = new Evidencias;
+            $c = new Evidencia;
             $c->estudiante_id = $evidencia['estudiante_id'];
             $c->tarea_id = $evidencia['tarea_id'];
             $c->url = $evidencia['url'];

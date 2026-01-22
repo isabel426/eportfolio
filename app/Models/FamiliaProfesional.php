@@ -8,11 +8,12 @@ class FamiliaProfesional extends Model
 {
         protected $table = 'familias_profesionales';
 
-        protected $fillable = ['codigo', 'nombre', 'imagen'];
+        protected $fillable = ['codigo', 'nombre', 'imagen', 'descripcion'];
 
         public static $filterColumns = [
-        'codigo',
-        'nombre',
-        'imagen'
-    ];
+            'codigo',
+            'nombre',
+            'imagen',
+            'descripcion'
+        ];
 }

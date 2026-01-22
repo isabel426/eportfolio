@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('evidencias', function (Blueprint $table) {
+        Schema::create('matriculas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('estudiante_id');
-            $table->unsignedBigInteger('tarea_id')->nullable();
-            $table->string('url');
-            $table->string('descripcion');
-            $table->enum('estado_validacion',['pendiente','validada','rechazada']);
+            $table->foreign('estudiante_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('evidencias');
+        Schema::dropIfExists('matriculas');
     }
 };

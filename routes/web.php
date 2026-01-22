@@ -8,7 +8,7 @@ use App\Http\Controllers\EvidenciasController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\FamiliasProfesionalesController;
 use App\Http\Controllers\ResultadosAprendizajeController;
-
+use App\Http\Controllers\MatriculasController;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -111,7 +111,17 @@ Route::prefix('evidencias')->group(function () {
         Route::put('update/{id}', [EvidenciasController::class, 'putCreate'])->where('id', '[0-9]+');
     });
 });
+Route::prefix('matriculas')->group(function () {
+        Route::get('/', [MatriculasController::class, 'getIndex']);
+        Route::get('show/{id}', [MatriculasController::class, 'getShow'])->where('id', '[0-9]+');
 
+        Route::group(['middleware' => 'auth'], function () {
+            Route::get('create', [MatriculasController::class, 'getCreate']);
+            Route::get('edit/{id}', [MatriculasController::class, 'getEdit'])->where('id', '[0-9]+');
+            Route::post('store', [MatriculasController::class, 'postCreate']);
+            Route::put('update/{id}', [MatriculasController::class, 'putCreate'])->where('id', '[0-9]+');
+        });
+    });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
