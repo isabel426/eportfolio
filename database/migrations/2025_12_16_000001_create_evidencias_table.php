@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('evidencias', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('estudiante_id');
-            $table->unsignedBigInteger('tarea_id');
+            $table->unsignedBigInteger('tarea_id')->nullable();
             $table->string('url');
             $table->string('descripcion');
             $table->enum('estado_validacion',['pendiente','validada','rechazada']);

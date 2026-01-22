@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Evaluacion;
 use App\Models\ResultadoAprendizaje;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -34,6 +35,9 @@ class DatabaseSeeder extends Seeder
         $this->call(EvidenciasTableSeeder::class);
         $this->call(ResultadosAprendizajeTableSeeder::class);
         $this->call(ModulosFormativosTableSeeder::class);
+
+         $this->call(TareasTableSeeder::class);
+        $this->call(EvaluacionesEvidenciasTableSeeder::class);
 
         Model::reguard();
         Schema::enableForeignKeyConstraints();
