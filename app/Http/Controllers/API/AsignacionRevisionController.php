@@ -69,11 +69,11 @@ class AsignacionRevisionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AsignacionRevision $asignacionRevision)
+    public function update(Request $request, Evidencia $evidencia, AsignacionRevision $asignacionRevision)
     {
         $asignacionData = json_decode($request->getContent(), true);
         $asignacionRevision->update($asignacionData);
-
+ 
         return new AsignacionRevisionResource($asignacionRevision);
     }
 
