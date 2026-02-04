@@ -16,15 +16,11 @@ class ModuloFormativoController extends Controller
     public function index(Request $request)
     {
 
-        $query = $request->is('*modulos-impartidos*')
-            ? $request->user()->modulosImpartidos()
+        $user = $request->user();
+
+        $query = ($request->is('*modulos-impartidos*') && $user)
+            ? $user->modulosImpartidos()
             : ModuloFormativo::query();
-
-
-        $query = ModuloFormativo::query();
-        if ($query) {
-            $query->orWhere('nombre', 'like', '%' . $request->q . '%');
-        }
 
         return  ModuloFormativoResource::collection(
             $query->orderBy('nombre', 'asc')
