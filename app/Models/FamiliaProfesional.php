@@ -16,4 +16,15 @@ class FamiliaProfesional extends Model
             'imagen',
             'descripcion'
         ];
+
+        /* Tests\Feature\Api\FamiliaProfesionalApiTest > codigo must be unique                                                                                         BadMethodCallException
+  Call to undefined method App\Models\FamiliaProfesional::factory()*/
+
+        /* HAz el método App\Models\FamiliaProfesional::factory()*/
+
+        public static function factory()
+        {
+            return new \Database\Factories\FamiliaProfesionalFactory();
+        }
+
 }

@@ -26,7 +26,6 @@ class FamiliasProfesionalesTableSeeder extends Seeder
         $this->command->info('¡Tabla familias_profesionales inicializada con datos!');
     }
 
-/* `marcapersonalfp`.`familias_profesionales` */
 public static $familias_profesionales = array(
   array('codigo' => 'ADG','nombre' => 'ACTIVIDADES FÍSICAS Y DEPORTIVAS'),
   array('codigo' => 'AFD','nombre' => 'ADMINISTRACIÓN Y GESTIÓN'),

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::dropIfExists('familias_profesionales');
         Schema::create('familias_profesionales', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 255);
+            $table->string('nombre', 255)->nullable();
             $table->string('descripcion', 50)->nullable();
             $table->string('codigo', 50)->unique();
             $table->timestamps();

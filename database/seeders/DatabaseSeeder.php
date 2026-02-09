@@ -19,10 +19,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        /*User::factory()->create([
+
+        User::factory()->create([
+            'id' => 1,
             'name' => 'Test User',
             'email' => 'test@example.com',
-        ]);*/
+        ]);
 
         Model::unguard();
         Schema::disableForeignKeyConstraints();
