@@ -7,6 +7,7 @@ use App\Http\Resources\ModuloFormativoResource;
 use App\Models\CicloFormativo;
 use App\Models\ModuloFormativo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ModuloFormativoController extends Controller
 {
@@ -74,5 +75,17 @@ class ModuloFormativoController extends Controller
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 400);
         }
+    }
+
+    public function modulos_impartidos(Request $request)
+    {
+        // Obtener el usuario autenticado
+        $user = Auth::user();
+
+        return ModuloFormativoResource::collection(
+            ModuloFormativo::where('docente_id',$user->id)
+                ->orderBy($request->_sort ?? 'nombre', $request->_order ?? 'asc')
+                ->paginate($request->perPage)
+        );
     }
 }

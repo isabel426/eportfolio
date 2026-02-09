@@ -16,7 +16,7 @@ class Tarea extends Model
         'fecha_apertura',
         'fecha_cierre',
         'activo',
-        'enunciado'
+        'observaciones'
     ];
 
     public function criterioEvaluacion()

@@ -19,7 +19,7 @@ class TareaResource extends JsonResource
             'fecha_apertura' => $this->fecha_apertura,
             'fecha_cierre' => $this->fecha_cierre,
             'activo' => $this->activo,
-            'enunciado' => $this->enunciado,
+            'observaciones' => $this->observaciones,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

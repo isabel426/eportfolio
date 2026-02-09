@@ -14,13 +14,13 @@ class TareasTableSeeder extends Seeder
      */
     public function run()
     {
-
+        Tarea::truncate();
         Tarea::create([
             'criterio_evaluacion_id' => 1,
             'fecha_apertura' => now(),
             'fecha_cierre' => now()->addDays(7),
             'activo' => true,
-            'enunciado' => 'Tarea de prueba 1',
+            'observaciones' => 'DWEC UT18. Ejercicios 1 de 2',
         ]);
 
         Tarea::create([
@@ -28,7 +28,24 @@ class TareasTableSeeder extends Seeder
             'fecha_apertura' => now(),
             'fecha_cierre' => now()->addDays(10),
             'activo' => true,
-            'enunciado' => 'Tarea de prueba 2',
+            'observaciones' => 'DWEC UT18. Ejercicios 2 de 2',
+        ]);
+
+        Tarea::create([
+            'criterio_evaluacion_id' => 1,
+            'fecha_apertura' => now(),
+            'fecha_cierre' => now()->addDays(10),
+            'activo' => true,
+            'observaciones' => 'DWEC UT18. Ejercicios de refuerzo',
+        ]);
+
+
+        Tarea::create([
+            'criterio_evaluacion_id' => 1,
+            'fecha_apertura' => now(),
+            'fecha_cierre' => now()->addDays(10),
+            'activo' => true,
+            'observaciones' => 'DWEC UT18. Ejercicios portfolio',
         ]);
     }
 }

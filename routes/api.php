@@ -31,8 +31,6 @@ Route::middleware(['auth:sanctum'])->get('/user',function (Request $request) {
 
 Route::prefix('v1')->group(function () {
 
-    Route::apiResource('modulos-impartidos', ModuloFormativoController::class);
-    
     Route::apiResource('familias-profesionales', FamiliaProfesionalController::class)
         ->parameters([
             'familias-profesionales' => 'familiaProfesional'
@@ -49,6 +47,7 @@ Route::prefix('v1')->group(function () {
             'ciclos-formativos' => 'parent_id',
             'modulos-formativos' => 'id'
         ]);
+    Route::middleware("auth:sanctum")->get('modulos-impartidos', [ModuloFormativoController::class, 'modulos_impartidos']);
 
     Route::apiResource('evidencias.comentarios', ComentarioController::class)->parameters([
         'evidencias' => 'evidencia',
@@ -66,19 +65,24 @@ Route::prefix('v1')->group(function () {
         'criterios_tareas' => 'criterioTarea'
     ]);
 
+    // ------------------------------
+    // TAREAS
     Route::apiResource('tareas', TareaController::class)->parameters([
         'tareas' => 'tarea'
-    ]);
+    ])->except(["index", "show"]);
+
+    Route::apiResource('criterios-evaluacion.tareas', TareaController::class)->parameters([
+        'criterios-evaluacion' => 'criterioEvaluacion',
+        'tareas' => 'tarea'
+    ])->only(["index", "show"]);
+
+    Route::post('tareas/{tarea}/asignacion-aleatoria', [TareaController::class, "asignacionAleatoria"]);
+    Route::get("resultados-aprendizaje/{resultadoAprendizaje}/tareas", [TareaController::class, "tareasPorRA"]);
 
     Route::apiResource('tareas.evidencias', EvidenciasController::class)
     ->parameters([
         'tareas' => 'tarea',
         'evidencias' => 'evidencia'
-    ]);
-
-    Route::apiResource('criterios-evaluacion.tareas', TareaController::class)->parameters([
-        'criterios-evaluacion' => 'criterioEvaluacion',
-        'tareas' => 'tarea'
     ]);
 
     Route::apiResource('evidencias.evaluaciones-evidencias', EvaluacionesEvidenciasController::class)->parameters([
@@ -88,6 +92,8 @@ Route::prefix('v1')->group(function () {
 
 
     Route::apiResource('matriculas', MatriculaController::class);
+
+    Route::middleware("auth:sanctum")->get('modulos-matriculados', [MatriculaController::class, 'modulos_matriculados']);
 
     Route::apiResource('modulos-formativos.resultados-aprendizaje',ResultadoAprendizajeController::class)
         ->parameters(['modulos-formativos' => 'parent_id', 'resultados-aprendizaje' => 'id'
@@ -106,6 +112,8 @@ Route::prefix('v1')->group(function () {
     Route::apiResource('roles', RolController::class)->parameters([
         'roles' => 'rol'
     ]);
+
+
 
 });
 
@@ -133,7 +141,7 @@ Route::any('/{any}', function (ServerRequestInterface $request) {
     }
     return $response;
 
-})->where('any', '.*');
+})->where('any', '.*')->middleware(['auth:sanctum']);
 
 
 

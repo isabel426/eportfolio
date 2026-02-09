@@ -60,7 +60,7 @@ private static $modulos_formativos = [
         'horasTotales' => 160,
         'cursoEscolar' => '2025/2026',
         'centro' => 'IES Tecnológico',
-        'docenteId' => 1,
+        'docenteId' => 5,
         'descripcion' => 'Programación con JavaScript, frameworks modernos y manipulación del DOM.'
     ],
     [
@@ -90,7 +90,7 @@ private static $modulos_formativos = [
         'horasTotales' => 190,
         'cursoEscolar' => '2025/2026',
         'centro' => 'IES Tecnológico',
-        'docenteId' => 1,
+        'docenteId' => 5,
         'descripcion' => 'Diseño lógico y físico de bases de datos relacionales SQL.'
     ],
     [

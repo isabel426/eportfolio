@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Matricula;
 use Illuminate\Http\Request;
 use App\Http\Resources\MatriculaResource;
+use App\Http\Resources\ModuloFormativoResource;
 use App\Http\Resources\UserResource;
 use App\Models\ModuloFormativo;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class MatriculaController extends Controller
 {
@@ -74,5 +76,19 @@ class MatriculaController extends Controller
                 'message' => 'Error: ' . $e->getMessage()
             ], 400);
         }
+    }
+
+    public function modulos_matriculados(Request $request)
+    {
+        // Obtener el usuario autenticado
+        $user = Auth::user();
+
+        $matriculas = Matricula::where("estudiante_id", $user->id)->get();
+
+        return ModuloFormativoResource::collection(
+            ModuloFormativo::where('id', $matriculas->pluck('modulo_formativo_id'))
+                ->orderBy($request->_sort ?? 'nombre', $request->_order ?? 'asc')
+                ->paginate($request->perPage)
+        );
     }
 }

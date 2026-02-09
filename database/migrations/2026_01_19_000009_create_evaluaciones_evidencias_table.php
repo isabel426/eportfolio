@@ -15,14 +15,14 @@ class CreateEvaluacionesEvidenciasTable extends Migration
     {
         Schema::create('evaluaciones_evidencias', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('evaluacion_id');
             $table->unsignedBigInteger('evidencia_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('url');
             $table->text('descripcion');
             $table->enum('estado_validacion', ['pendiente', 'validada', 'rechazada']);
             $table->timestamps();
 
-
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('evidencia_id')->references('id')->on('evidencias')->onDelete('cascade');
         });
     }

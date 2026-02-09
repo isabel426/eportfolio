@@ -16,8 +16,8 @@ class EvaluacionesEvidenciasTableSeeder extends Seeder
     public function run()
     {
         EvaluacionesEvidencia::create([
-            'evaluacion_id' => 1,
             'evidencia_id' => 2,
+            'user_id' => 1,
             'url' => 'https://example.com/evidencia1',
             'descripcion' => 'Evidencia 1 para la evaluación 1',
             'estado_validacion' => 'pendiente',
@@ -26,8 +26,8 @@ class EvaluacionesEvidenciasTableSeeder extends Seeder
         ]);
 
         EvaluacionesEvidencia::create([
-            'evaluacion_id' => 2,
             'evidencia_id' => 3,
+            'user_id' => 1,
             'url' => 'https://example.com/evidencia2',
             'descripcion' => 'Evidencia 2 para la evaluación 2',
             'estado_validacion' => 'validada',
@@ -36,8 +36,8 @@ class EvaluacionesEvidenciasTableSeeder extends Seeder
         ]);
 
         EvaluacionesEvidencia::create([
-            'evaluacion_id' => 3,
             'evidencia_id' => 1,
+            'user_id' => 1,
             'url' => 'https://example.com/evidencia3',
             'descripcion' => 'Evidencia 3 para la evaluación 3',
             'estado_validacion' => 'rechazada',
