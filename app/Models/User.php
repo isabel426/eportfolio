@@ -57,4 +57,29 @@ class User extends Authenticatable
     {
         return $this->email === config('app.admin.email');
     }
+
+    public function esDocente() {
+        return $this->belongsToMany(Docente::class);
+    }
+
+    public function esEstudiante() {
+        return $this->belongsToMany(ModuloFormativo::class);
+    }
+
+    public function modulosMatriculados(Matricula $matricula) {
+        if ($this->id === $matricula->estudiante_id) {
+            return true;
+        }
+    }
+
+    public function modulosImpartidos(ModuloFormativo $moduloFormativo) {
+        if ($this->id === $moduloFormativo->docente_id) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
 }
