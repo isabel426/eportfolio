@@ -9,6 +9,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\FamiliasProfesionalesController;
 use App\Http\Controllers\ResultadosAprendizajeController;
 use App\Http\Controllers\MatriculasController;
+use App\Http\Controllers\PortfolioImportController;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -42,7 +43,6 @@ Route::prefix('familias-profesionales')->group(function () {
         Route::put('update/{id}', [FamiliasProfesionalesController::class, 'putCreate'])->where('id', '[0-9]+');
     });
 });
-
 
 Route::prefix('resultados-aprendizaje')->group(function () {
 
@@ -128,5 +128,21 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+Route::middleware(['auth'])->group(function () {
+    // Formulario de importación
+    Route::get('/portfolio/import', [PortfolioImportController::class, 'showImportForm'])
+        ->name('portfolio.import.index');
+
+    // Importar desde JSON Resume
+    Route::post('/portfolio/import/json-resume', [PortfolioImportController::class, 'importJsonResume'])
+        ->name('portfolio.import.json-resume');
+
+    // Importar desde GitHub
+    Route::post('/portfolio/import/github', [PortfolioImportController::class, 'importGitHub'])
+        ->name('portfolio.import.github');
+});
+
 
 require __DIR__ . '/auth.php';
