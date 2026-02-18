@@ -11,8 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreign('id')->references('estudiante_id')->on('matriculas')->onDelete('cascade');
+        Schema::create('skills', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->unique();
+            $table->json('keywords')->nullable();
+            $table->timestamps();
+
+            // Índice para búsquedas rápidas por nombre
+            $table->index('name');
         });
     }
 
@@ -21,9 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['id']);
-            $table->dropColumn('id');
-        });
+        Schema::dropIfExists('skills');
     }
 };

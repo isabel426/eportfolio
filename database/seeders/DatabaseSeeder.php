@@ -37,8 +37,14 @@ class DatabaseSeeder extends Seeder
         $this->call(ResultadosAprendizajeTableSeeder::class);
         $this->call(ModulosFormativosTableSeeder::class);
 
-         $this->call(TareasTableSeeder::class);
+        $this->call(TareasTableSeeder::class);
         $this->call(EvaluacionesEvidenciasTableSeeder::class);
+
+        // Orden importante: primero users, luego skills
+        $this->call([
+            // UserSeeder::class, // Si tienes un seeder de usuarios
+            SkillSeeder::class,
+        ]);
 
         Model::reguard();
         Schema::enableForeignKeyConstraints();

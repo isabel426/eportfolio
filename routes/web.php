@@ -10,6 +10,7 @@ use App\Http\Controllers\FamiliasProfesionalesController;
 use App\Http\Controllers\ResultadosAprendizajeController;
 use App\Http\Controllers\MatriculasController;
 use App\Http\Controllers\PortfolioImportController;
+use App\Http\Controllers\SkillAnalyticsController;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -112,16 +113,16 @@ Route::prefix('evidencias')->group(function () {
     });
 });
 Route::prefix('matriculas')->group(function () {
-        Route::get('/', [MatriculasController::class, 'getIndex']);
-        Route::get('show/{id}', [MatriculasController::class, 'getShow'])->where('id', '[0-9]+');
+    Route::get('/', [MatriculasController::class, 'getIndex']);
+    Route::get('show/{id}', [MatriculasController::class, 'getShow'])->where('id', '[0-9]+');
 
-        Route::group(['middleware' => 'auth'], function () {
-            Route::get('create', [MatriculasController::class, 'getCreate']);
-            Route::get('edit/{id}', [MatriculasController::class, 'getEdit'])->where('id', '[0-9]+');
-            Route::post('store', [MatriculasController::class, 'postCreate']);
-            Route::put('update/{id}', [MatriculasController::class, 'putCreate'])->where('id', '[0-9]+');
-        });
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('create', [MatriculasController::class, 'getCreate']);
+        Route::get('edit/{id}', [MatriculasController::class, 'getEdit'])->where('id', '[0-9]+');
+        Route::post('store', [MatriculasController::class, 'postCreate']);
+        Route::put('update/{id}', [MatriculasController::class, 'putCreate'])->where('id', '[0-9]+');
     });
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -144,5 +145,5 @@ Route::middleware(['auth'])->group(function () {
         ->name('portfolio.import.github');
 });
 
-
 require __DIR__ . '/auth.php';
+require __DIR__ . '/analisis.php';
