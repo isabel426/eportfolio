@@ -1,0 +1,86 @@
+/* ──────────────────────────────────────────
+   Flash Messages — standalone stylesheet
+   ────────────────────────────────────────── */
+
+.flash-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 48rem;
+    margin-inline: auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.flash {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid transparent;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    animation: flash-in 0.25s ease;
+}
+
+@keyframes flash-in {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Tipos */
+.flash--success {
+    background-color: #f0fdf4;
+    border-color: #22c55e;
+    color: #15803d;
+}
+
+.flash--error {
+    background-color: #fef2f2;
+    border-color: #ef4444;
+    color: #b91c1c;
+}
+
+.flash--warning {
+    background-color: #fffbeb;
+    border-color: #f59e0b;
+    color: #b45309;
+}
+
+.flash--info {
+    background-color: #eff6ff;
+    border-color: #3b82f6;
+    color: #1d4ed8;
+}
+
+/* Icono (emoji por defecto, fácil de sobreescribir) */
+.flash__icon::before {
+    font-style: normal;
+}
+.flash--success .flash__icon::before { content: "✓"; }
+.flash--error   .flash__icon::before { content: "✕"; }
+.flash--warning .flash__icon::before { content: "⚠"; }
+.flash--info    .flash__icon::before { content: "ℹ"; }
+
+/* Mensaje */
+.flash__message {
+    flex: 1;
+    margin: 0;
+}
+
+/* Botón de cierre */
+.flash__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.25rem;
+    line-height: 1;
+    padding: 0;
+    opacity: 0.6;
+    color: inherit;
+    transition: opacity 0.15s;
+    flex-shrink: 0;
+}
+.flash__close:hover { opacity: 1; }
