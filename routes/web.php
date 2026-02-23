@@ -7,6 +7,7 @@ use App\Http\Controllers\CiclosFormativosController;
 use App\Http\Controllers\EvidenciasController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\FamiliasProfesionalesController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ResultadosAprendizajeController;
 use App\Http\Controllers\MatriculasController;
 use App\Http\Controllers\PortfolioImportController;
@@ -144,6 +145,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/portfolio/import/github', [PortfolioImportController::class, 'importGitHub'])
         ->name('portfolio.import.github');
 });
+
+Route::get('/mail/prueba', [MailController::class, 'prueba']);
+
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/analisis.php';
